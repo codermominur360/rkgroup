@@ -8,13 +8,18 @@ class CreateStoresTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *gate_id','merchandiser_id','received_qty','mmr_no
      * @return void
      */
     public function up()
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('gate_id');
+            $table->string('merchandiser_id');
+            $table->string('received_qty');
+            $table->string('order_id');
+            $table->string('mmr_no');
             $table->timestamps();
         });
     }

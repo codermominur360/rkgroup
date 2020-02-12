@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <div class="box-body">
                     <div class="box-header">
-                        <h3 class="box-title">Company Member list<a href="gate/create" class="btn btn-primary ml-5">Create</a></h3>
+                        <h3 class="box-title">Company Member list<a href="/store/create" class="btn btn-primary ml-5">Create</a></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -20,21 +20,23 @@
                             <thead>
                             <tr>
                                 <th>SL No</th>
-                                <th>Order Number</th>
-                                <th>Chalan </th>
                                 <th>Gate Serial</th>
+                                <th>Oerder Id </th>
+                                <th>Received qty</th>
+                                <th>MMR No</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @if(count($gateData) > 0)
-                                    @php(i==1);
-                                    @foreach($gateData as $data)
+                                @if(count($store) > 0)
+                                    
+                                    @foreach($store as $data)
                                         <tr>
                                             <td>{{$data->i++}}</td>
-                                            <td>{{$data->order_number}}</td>
-                                            <td>{{$data->chalan}}</td>  
-                                            <td>{{$data->gate_seria}}</td>
+                                            <td>{{$data->gate_id}}</td>
+                                            <td>{{$data->merchandiser_id}}</td>  
+                                            <td>{{$data->received_qty}}</td>
+                                            <td>{{$data->mmr_no}}</td>
                                             <td>
                                             <a href="/gate/{{$data->id}}/edit" class="btn btn-info btn-sm">Edit</a>  
                                             </td>
@@ -44,13 +46,14 @@
                                 <h3 class="btn btn-danger d-block">You Have Not Data Yet Now!</h3>
                                 @endif
                             
-                            </tbody>
+                            </tbody> -->
                             <tfoot>
                             <tr>
                                 <th>SL No</th>
-                                <th>Order Number</th>
-                                <th>Chalan </th>
                                 <th>Gate Serial</th>
+                                <th>Oerder Id </th>
+                                <th>Received qty</th>
+                                <th>MMR No</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
@@ -68,6 +71,6 @@
 @endsection
 
 @section('JsScript')
-   
+
 
 @stop

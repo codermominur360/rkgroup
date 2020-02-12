@@ -17,9 +17,9 @@
         </div>
 
         <div class="page-content">
-            <h4 class="text-center">Buyer and Order Create</h4>
+            <h4 class="text-center ">Buyer and Order Create</h4>
                 @if (session()->has('success'))
-                <p class="alert alert-success sessionOut">{{ session('success') }}</p>
+                <p class="alert alert-success " id="sessionOut">{{ session('success') }}</p>
                 @endif
             <hr>
             <div class="row">
@@ -83,8 +83,14 @@
 @endsection
 
 @section('JsScript')
+     <script>
+     $(document).ready(function(){
+         $('#sessionOut').setTimeout($this, 2000)
+     });
+     </script>
      
-<script src="text/javascript">
- alert(dd);
-</script>
+     <!-- <script>
+        var sessionOut = document.getElementById("sessionOut");
+        setTimeout(sessionOut, 2000);
+     </script> -->
 @stop

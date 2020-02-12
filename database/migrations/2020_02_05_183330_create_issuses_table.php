@@ -15,6 +15,9 @@ class CreateIssusesTable extends Migration
     {
         Schema::create('issuses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('order_id');
+            $table->string('merchandiser_id');
+            $table->string('gate_id');
             $table->timestamps();
         });
     }

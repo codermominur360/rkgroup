@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Gate;
+use App\Model\Order;
 
 class GateController extends Controller
 {
@@ -17,8 +18,11 @@ class GateController extends Controller
     
     public function create()
     {
+        $order_numeber= Order::pluck('order_number','id'); 
         $gateData=Gate::all();
-        return view('admin.gate.create')->with('gateData',$gateData);
+        return view('admin.gate.create')
+                ->with('gateData',$gateData) 
+                ->with('order_numeber',$order_numeber);
     }
 
  

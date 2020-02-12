@@ -17,9 +17,9 @@ class CreateMerchandisersTable extends Migration
             $table->bigIncrements('id');
             $table->string('buyer_id');
             $table->string('order_id');
-            $table->string('item');
-            $table->string('size');
-            $table->string('qty');
+            $table->string('item')->nullable();
+            $table->string('size')->nullable();
+            $table->string('qty')->nullable();
             $table->string('booking');
             $table->string('actual_qty');
             $table->string('file_no');

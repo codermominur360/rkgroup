@@ -25,14 +25,16 @@
             <div class="row justify-content-center">
                 {!! Form::open(['action'=>'GateController@store','method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => ' form-inline']) !!}
                     <div class="form-row">
-                        <div class="col">
-                            {{Form::text('order_number', '', ['class' => 'form-control', 'placeholder' => 'Order Number'])}}
+                        <div class="col"> 
+                            {{Form::select('order_number',$order_numeber,
+                            null,
+                            ['class' => ' form-control custom-select'], ['placeholder' => 'Please Select Status'])}}
                         </div>
                         <div class="col">
-                        {{Form::text('chalan', '', ['class' => 'form-control', 'placeholder' => 'Order Number'])}}
+                        {{Form::text('chalan', '', ['class' => 'form-control', 'placeholder' => 'Enter Chalan'])}}
                         </div>
                         <div class="col">
-                        {{Form::text('gate_seria', '', ['class' => 'form-control', 'placeholder' => 'Serial Number'])}}
+                        {{Form::text('gate_seria', '', ['class' => 'form-control', 'placeholder' => 'Enter Gate serial'])}}
                         </div>
                         <div class="col">
                         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
@@ -60,9 +62,9 @@
                 @foreach($gateData as $data)
                     <tr>
                     <th scope="row">{{$i++}}</th>
+                    <td>{{$data->order_number}}</td>
                     <td>{{$data->gate_seria}}</td>
                     <td>{{$data->chalan}}</td>
-                    <td>{{$data->order_number}}</td>
                     <td>
                         <a href="/gate/{{$data->id}}/edit" class="btn btn-sm btn-danger"><i class="fa fa-edit"></i></a>
                     </td>

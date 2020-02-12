@@ -31,8 +31,24 @@ class MerchandiserController extends Controller
     //** buyer_id','order_id','item','size','qty','booking','actual_qty','file_no'* */
 
     public function store(Request $request)
-    {
-        
+    {    
+       
+        // foreach($request as $key )
+        // {
+        //     $arrData= array( 
+        //         'buyer_id'    => $buyer_id[$key],
+        //         'order_id'    => $order_id[$key], 
+        //         'file_no'     => $file_no[$key], 
+        //         'item'        => $item[$key], 
+        //         'size'        => $size[$key],
+        //         'qty'         => $qty[$key],
+        //         'booking'     => $booking[$key],
+        //         'actual_qty'  => $actual_qty[$key]                        
+        //     );
+        // }  
+
+        // DB::table('merchandisers')->insert($arrData[]);
+
         $data= new Merchandiser();
         $data->buyer_id=$request->input('buyer_id');
         $data->order_id=$request->input('order_id');
@@ -42,8 +58,7 @@ class MerchandiserController extends Controller
         $data->booking=$request->input('booking');
         $data->actual_qty=$request->input('actual_qty');
         $data->file_no=$request->input('file_no');
-        $data->save();
-        dd($data);
+        $data->save(); 
         
         return redirect()->back()-with('message','Item created successfully !');
 

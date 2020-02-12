@@ -3,80 +3,65 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Issuse;
+use App\Model\Store;
+use App\Model\Order;
+use App\Model\Merchandiser;
+use DB;
+
 
 class IssuseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        //
+        $issuse = DB::table('issuses')
+            ->join('orders', 'issuses.order_id', '=', 'orders.id')
+            ->join('merchandisers', 'issuses.id', '=', 'merchandisers.id')
+            ->join('gates', 'issuses.id', '=', 'gates.id')
+            // ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();
+        return view('admin.issuse.index')->with('issuse',$issuse);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+     
     public function create()
     {
-        //
+       
+        $store_rec_qty= Store::pluck('merchandiser_id');
+        $actual_qty   = Merchandiser::pluck('actual_qty','id');
+        $merchan_qty  = Merchandiser::pluck('qty');
+        return view('admin.issuse.create')
+            ->with('store_rec_qty',$store_rec_qty)
+            ->with('actual_qty',$actual_qty)
+            ->with('merchan_qty',$merchan_qty)
+            ->with('order_num',$order_num);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+     
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         //

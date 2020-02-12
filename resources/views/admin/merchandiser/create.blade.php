@@ -72,10 +72,11 @@
                                 </select></td>
                                 <td><input type="text" name="actual_qty" class="form-control"  placeholder=" actual_qty"></td>
                                 <td><button id="remove" class="btn btn-danger"> X </button></td>
+                                <button id="addItem" class="btn btn-success"> + </button>
+
                             </tr>
                         </tbody>
                     </table>
-                    <button id="addItem" class="btn btn-success"> + </button>
                     <hr>
                     <p class="text-center">
                         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
@@ -90,19 +91,7 @@
             <!-- Start Oroder content list  -->
             <div class="content mt-3">
             <h4>Order list</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Buyer Name</th>
-                    <th scope="col">Order Number</th>
-                    <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  
-                </tbody>
-            </table>
+             
             </div>
         </div><!-- /.page-content -->
     </div>
@@ -130,30 +119,34 @@
             e.preventDefault();
             $(this).closest('tr').remove();
         });
-        $(".insertmerchandiser").on('submit',function(e){
-            e.preventDefault();
+         
+            $(document).on('submit','#insertmerchandiser',function(){ 
+                var data=$(this).serialize();
+                $.ajax({
+                    url:"{{URL::to('MerchandiserController@store')}}",
+                    method:'POST',
+                    data:data,
+                    type:'json',
+                    success:function(data){
+                        console.log(data);
+                        // var html= '';
+                        // if(data.errors){
+                        //     html+='<div class="page-content">';
+                        //     for(var i=0; i<data.rerrors.length; i++){
+                        //         html+='<h4 class="text-center message">'+data.errors[i]+'</h4>';
+                        //     }
+                        //     html+='</div>';
+                        // }
+                        // if(data.success){
+                        //     html='<h4 class="text-center message">'+data.errors[i]+'</h4>';
+                        //     $('#insertmerchandiser')[0].reset();
+                        // }
 
-            $ajax(){
-                url:"{{URL::to('MerchandiserController@store')}}",
-                method:'POST',
-                data:json,
-                success:function(){
-                    var html= '';
-                    if(data.errors){
-                        html+='<div class="page-content">';
-                        for(var i=0; i<data.rerrors.length; i++){
-                            html+='<h4 class="text-center message">'+data.errors[i]+'</h4>';
-                        }
-                        html+='</div>';
                     }
-                    if(data.success){
-                        html='<h4 class="text-center message">'+data.errors[i]+'</h4>';
-                        $('#sample')[0].reset();
-                    }
-
-                }
-            }
-        });
+                })
+            });
+    
+        
 
 
     </script>

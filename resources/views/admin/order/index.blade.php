@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <div class="box-body">
                     <div class="box-header">
-                        <h3 class="box-title">Order Table<a href="member/create" class="btn btn-primary ml-5">Create</a></h3>
+                        <h3 class="box-title">Order Table<a href="/order/create" class="btn btn-primary ml-5">Create</a></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">

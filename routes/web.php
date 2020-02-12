@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('admin.merchandiser.index');
+    return view('admin.index');
 });
 
 Auth::routes();
@@ -20,5 +20,8 @@ Auth::routes();
 Route::resource('/gate','GateController');
 Route::resource('/order','OrderController');
 Route::resource('/merchandiser','MerchandiserController');
+Route::resource('/store','StoreController');
+Route::get('/h','StoreController@h');
+Route::resource('/issuse','IssuseController');
 
 Route::get('/home', 'HomeController@index')->name('home');

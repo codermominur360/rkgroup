@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <div class="box-body">
                     <div class="box-header">
-                        <h3 class="box-title">Company Member list<a href="member/create" class="btn btn-primary ml-5">Create</a></h3>
+                        <h3 class="box-title">Company Member list<a href="merchandiser/create" class="btn btn-primary ml-5">Create</a></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -20,24 +20,33 @@
                             <thead>
                             <tr>
                                 <th>SL No</th>
-                                <th>name</th>
-                                <th>position</th>
-                                <th>image</th>
-                                <th>status</th>
+                                <th>Buyer name</th>
+                                <th>Order Number</th>
+                                <th>File Number</th>
+                                <th>Item</th>
+                                <th>Size</th>
+                                <th>Qty</th>
+                                <th>Booking</th>
+                                <th>Actual QTy</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
+                            <!-- item','size','qty','booking','actual_qty','file_no' -->
                             <tbody>
-                                @if(count($merchendisar)>0)
-                                    
-                                    @foreach($merchendisar as $data)
+                                @if(count($merchendisar) > 0) 
+                                   @foreach($merchendisar as $data)
                                         <tr>
                                             <td>{{$data->i++}}</td>
-                                            <td>{{$data->order}}</td>
-                                            <td>{{$data->position}}</td>  
-                                            <td>{{$data->status}}</td>
+                                            <td>{{$data->order->buyer}}</td>
+                                            <td>{{$data->order->order_number}}</td>
+                                            <td>{{$data->file_no}}</td>
+                                            <td>{{$data->item}}</td>  
+                                            <td>{{$data->size}}</td>  
+                                            <td>{{$data->qty}}</td>  
+                                            <td>{{$data->booking}}</td> 
+                                            <td>{{$data->actual_qty}}</td>  
                                             <td>
-                                            <a href="/member/{{$data->id}}/edit" class="btn btn-info btn-sm">Edit</a> 
+                                            <a href="/member/{{$data->id}}/edit" class="btn btn-info btn-sm"><i class="fa fa-pen"></i></a> 
                                             </td>
                                         </tr>
                                     @endforeach
